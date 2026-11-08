@@ -79,15 +79,6 @@
    "note": "Not one of the five scheduled EN2712 online tests on the slides. Check which assessment this is."
   },
   {
-   "mod": "DESIGN",
-   "title": "Practical design assignment 1",
-   "week": "2026-11-16",
-   "weight": "10%",
-   "kind": "cw",
-   "tbc": true,
-   "note": "PCB design and CAD assignments, 20% together."
-  },
-  {
    "mod": "EN2750",
    "title": "In-lab test T3 (Loops)",
    "date": "2026-11-18",
@@ -124,15 +115,6 @@
    "room": "T/1.08, T/2.06",
    "kind": "test",
    "weight": "8%"
-  },
-  {
-   "mod": "DESIGN",
-   "title": "Practical design assignment 2",
-   "week": "2026-11-30",
-   "weight": "10%",
-   "kind": "cw",
-   "tbc": true,
-   "note": "PCB design and CAD assignments, 20% together."
   },
   {
    "mod": "EN2713",
@@ -177,6 +159,26 @@
    "kind": "test",
    "date": "2026-12-16",
    "weight": "10%"
+  },
+  {
+   "mod": "DESIGN",
+   "title": "PCB individual design task due",
+   "date": "2026-12-17",
+   "start": "12:00",
+   "weight": "10%",
+   "kind": "cw",
+   "room": "Learning Central",
+   "note": "Practical design assessment, 20% across the PCB and CAD tasks."
+  },
+  {
+   "mod": "DESIGN",
+   "title": "CAD individual design task due",
+   "date": "2026-12-17",
+   "start": "12:00",
+   "weight": "10%",
+   "kind": "cw",
+   "room": "Learning Central",
+   "note": "Practical design assessment, 20% across the PCB and CAD tasks."
   },
   {
    "mod": "EN2750",
