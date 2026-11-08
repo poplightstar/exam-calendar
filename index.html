@@ -36,6 +36,13 @@ a{color:var(--ink)}
 .key{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--faint)}
 .tag{font:600 10px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:2px 3px;border:1px solid currentColor;display:inline-block;vertical-align:1px}
 .k-test{color:var(--red)} .k-exam{color:var(--red)} .k-cw{color:var(--amber)} .k-presentation{color:var(--blue)} .k-lab{color:var(--green)}
+.modkey{margin-top:22px;border-top:1px solid var(--rule)}
+.modkey h2{font:500 22px var(--serif);margin:14px 0 6px}
+.modkey dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px;margin:0}
+.modkey div{padding:9px 0;border-bottom:1px solid var(--rule);min-width:0}
+.modkey dt{font-weight:600}
+.modkey dt span{font-weight:400;color:var(--faint)}
+.modkey dd{margin:2px 0 0;font-size:13px;color:var(--faint)}
 section.month{margin-top:36px}
 .month h2{font:500 28px/1 var(--serif);margin:0 0 8px;display:flex;gap:12px;align-items:baseline}
 .month h2 span{font:13px var(--sans);color:var(--faint)}
@@ -93,16 +100,18 @@ footer{margin-top:40px;font-size:12px;color:var(--faint)}
     <div class="filters" id="filters"></div>
     <div class="key"><span><span class="tag k-test">Test</span></span><span><span class="tag k-cw">Due</span></span><span><span class="tag k-presentation">Pres</span></span><span><span class="tag k-lab">Lab</span></span></div>
   </div>
+  <section class="modkey"><h2>Key</h2><dl id="modkey"></dl></section>
   <div id="months"></div>
   <div class="later">
-    <h2>Spring, week only</h2>
+    <h2>Spring and summer, week only</h2>
     <p>These are on the slides by teaching week. Dates go in once the spring timetable is out.</p>
     <table id="tbc"></table>
   </div>
   <div class="notes">
     <h2>To check</h2>
     <ul>
-      <li>EN2721 Signals tests are pencilled in every two weeks from 4 Nov. 18 Nov, 2 Dec and 16 Dec are also EN2750 in-lab test days.</li>
+      <li>EN2721 has three class tests: 4 Nov, 18 Nov and 2 Dec. 18 Nov and 2 Dec are also EN2750 lab demo days.</li>
+      <li>The Fri 13 Nov power test isn't one of the five EN2712 tests on the slides, so check what it is.</li>
       <li>The EN2750 final test (80%) is in week 12 with no day given. If it's the Wednesday lab slot, it's 13 Jan.</li>
       <li>The EN2710 Group Design Project items only give a week, so they sit under that week as "day TBC".</li>
       
@@ -113,6 +122,7 @@ footer{margin-top:40px;font-size:12px;color:var(--faint)}
 <script>
 const TAG = {test:"Test",exam:"Final",cw:"Due",presentation:"Pres",lab:"Lab"};
 const NAMES = {SAS:"EN2721",DESIGN:"EN2710"};
+const SHORT = {EN2750:"Programming",SAS:"Signals",EN2712:"Power",EN2713:"Circuits",EN2090:"Maths",DESIGN:"Design"};
 const label = m => NAMES[m] || m;
 const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 const parse = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y,m-1,d); };
@@ -186,7 +196,7 @@ function render(){
 function filters(){
   const mods = ["EN2750","SAS","EN2712","EN2713","EN2090","DESIGN"];
   const f = document.getElementById("filters");
-  f.innerHTML = [`<button data-m="">All</button>`, ...mods.map(m=>`<button data-m="${m}">${label(m)}</button>`)].join("");
+  f.innerHTML = [`<button data-m="">All</button>`, ...mods.map(m=>`<button data-m="${m}">${label(m)} ${SHORT[m]}</button>`)].join("");
   const sync = () => f.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.m||null) === active)));
   f.onclick = ev => { const b = ev.target.closest("button"); if(!b) return; active = b.dataset.m || null;
     try { active ? localStorage.setItem("exams-mod",active) : localStorage.removeItem("exams-mod"); } catch(e) {}
@@ -194,7 +204,7 @@ function filters(){
   sync();
 }
 
-fetch("events.json").then(r=>r.json()).then(d => { DATA = d; filters(); render(); })
+fetch("events.json").then(r=>r.json()).then(d => { DATA = d; document.getElementById("modkey").innerHTML = d.key.map(k=>`<div><dt>${label(k.mod)} ${k.name} <span>· ${k.credits} credits · ${k.sem}</span></dt><dd>${k.split}</dd></div>`).join(""); filters(); render(); })
   .catch(() => { document.getElementById("next").textContent = "Couldn't load events.json."; });
 </script>
 </body>

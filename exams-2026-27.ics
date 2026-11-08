@@ -22,259 +22,236 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:examcal-EN2713-2026-11-11-Test1:Netw@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2713: Test 1: Network analysis (30 min)
+UID:examcal-EN2713-2026-11-11-Test1Networkanal@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2713 Electronic Circuit Design: Test 1: Network analysis (30 min) (10%)
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
-DESCRIPTION:Analogue electronics\, networks and digital. Nodal\, mesh\, 2-port Z/Y parameters\, T/Pi-equivalent and transmission parameters.
+DESCRIPTION:Nodal\, mesh\, 2-port Z/Y parameters\, T/Pi-equivalent and transmission parameters.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2713: Test 1: Network analysis (30 min)
+DESCRIPTION:EN2713 Electronic Circuit Design: Test 1: Network analysis (30 min) (10%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2713: Test 1: Network analysis (30 min)
+DESCRIPTION:EN2713 Electronic Circuit Design: Test 1: Network analysis (30 min) (10%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:examcal-EN2712-2026-11-13-Powertest@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2712: Power test
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2712 Electric Power Systems: Power test
 DTSTART;TZID=Europe/London:20261113T143000
 DTEND;TZID=Europe/London:20261113T152000
-DESCRIPTION:Electrical machines and power. Room not confirmed.
+DESCRIPTION:Not one of the five scheduled EN2712 online tests on the slides. Check which assessment this is.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Power test
+DESCRIPTION:EN2712 Electric Power Systems: Power test
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Power test
+DESCRIPTION:EN2712 Electric Power Systems: Power test
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-EN2750-2026-11-18-In-labtest@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2750: In-lab test T3 (Loops) (5%)
+UID:examcal-EN2750-2026-11-18-InlabtestT3Loops@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2750 Programming for Engineering: In-lab test T3 (Loops) (5%)
 DTSTART;TZID=Europe/London:20261118T100000
 DTEND;TZID=Europe/London:20261118T115000
-DESCRIPTION:Computing. Hand in Assignment 3 at the lab or the test scores 0. Quiz 3 this week.
+DESCRIPTION:Hand in Assignment 3 at the lab or the test scores 0. Quiz 3 this week.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2750: In-lab test T3 (Loops) (5%)
+DESCRIPTION:EN2750 Programming for Engineering: In-lab test T3 (Loops) (5%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2750: In-lab test T3 (Loops) (5%)
+DESCRIPTION:EN2750 Programming for Engineering: In-lab test T3 (Loops) (5%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-SAS-2026-11-18-Signalstest@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:Signals: Signals test
+UID:examcal-SAS-2026-11-18-Classtest225min@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2721 Signals and Systems for Communications: Class test 2 (25 min) (12%)
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
-DESCRIPTION:Signals and Systems. Every 2 weeks from 4 Nov\, Wednesday morning Signals slot.
+DESCRIPTION:Every two weeks from 4 Nov\, in the Wednesday morning Signals slot.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Signals: Signals test
+DESCRIPTION:EN2721 Signals and Systems for Communications: Class test 2 (25 min) (12%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Signals: Signals test
+DESCRIPTION:EN2721 Signals and Systems for Communications: Class test 2 (25 min) (12%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-EN2090-2026-11-26-Courseworkd@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2090: Coursework due (single PDF + signed cover sheet) (20%)
+UID:examcal-EN2090-2026-11-26-Courseworkduesin@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2090 Engineering Mathematics 2: Coursework due (single PDF + signed cover sheet) (20%)
 DTSTART;TZID=Europe/London:20261126T120000
 DTEND;TZID=Europe/London:20261126T125000
 LOCATION:Learning Central
-DESCRIPTION:Coursework module. Late work is penalised.
+DESCRIPTION:Late work is penalised.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2090: Coursework due (single PDF + signed cover sheet) (20%)
+DESCRIPTION:EN2090 Engineering Mathematics 2: Coursework due (single PDF + signed cover sheet) (20%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2090: Coursework due (single PDF + signed cover sheet) (20%)
+DESCRIPTION:EN2090 Engineering Mathematics 2: Coursework due (single PDF + signed cover sheet) (20%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-EN2712-2026-11-26-Test:Asynch@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2712: Test: Asynchronous machines
+UID:examcal-EN2712-2026-11-26-TestAsynchronous@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2712 Electric Power Systems: Test: Asynchronous machines (8%)
 DTSTART;TZID=Europe/London:20261126T131000
 DTEND;TZID=Europe/London:20261126T140000
 LOCATION:T/1.08\, T/2.06
-DESCRIPTION:Electrical machines and power
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Test: Asynchronous machines
+DESCRIPTION:EN2712 Electric Power Systems: Test: Asynchronous machines (8%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Test: Asynchronous machines
+DESCRIPTION:EN2712 Electric Power Systems: Test: Asynchronous machines (8%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-EN2750-2026-12-02-In-labtest@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2750: In-lab test T4 (Functions) (5%)
+UID:examcal-EN2750-2026-12-02-InlabtestT4Funct@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2750 Programming for Engineering: In-lab test T4 (Functions) (5%)
 DTSTART;TZID=Europe/London:20261202T100000
 DTEND;TZID=Europe/London:20261202T115000
-DESCRIPTION:Computing. Hand in Assignment 4 at the lab. Quiz 4 this week.
+DESCRIPTION:Hand in Assignment 4 at the lab. Quiz 4 this week.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2750: In-lab test T4 (Functions) (5%)
+DESCRIPTION:EN2750 Programming for Engineering: In-lab test T4 (Functions) (5%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2750: In-lab test T4 (Functions) (5%)
+DESCRIPTION:EN2750 Programming for Engineering: In-lab test T4 (Functions) (5%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-SAS-2026-12-02-Signalstest@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:Signals: Signals test
+UID:examcal-SAS-2026-12-02-Classtest325min@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2721 Signals and Systems for Communications: Class test 3 (25 min) (12%)
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
-DESCRIPTION:Signals and Systems
+DESCRIPTION:Every two weeks from 4 Nov\, in the Wednesday morning Signals slot.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Signals: Signals test
+DESCRIPTION:EN2721 Signals and Systems for Communications: Class test 3 (25 min) (12%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Signals: Signals test
+DESCRIPTION:EN2721 Signals and Systems for Communications: Class test 3 (25 min) (12%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-EN2750-2026-12-16-In-labtest@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2750: In-lab test T5 (Arrays) (5%)
+UID:examcal-EN2750-2026-12-16-InlabtestT5Array@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2750 Programming for Engineering: In-lab test T5 (Arrays) (5%)
 DTSTART;TZID=Europe/London:20261216T100000
 DTEND;TZID=Europe/London:20261216T115000
-DESCRIPTION:Computing. Hand in Assignment 5 at the lab. Quiz 5 this week.
+DESCRIPTION:Hand in Assignment 5 at the lab. Quiz 5 this week.
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2750: In-lab test T5 (Arrays) (5%)
+DESCRIPTION:EN2750 Programming for Engineering: In-lab test T5 (Arrays) (5%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2750: In-lab test T5 (Arrays) (5%)
+DESCRIPTION:EN2750 Programming for Engineering: In-lab test T5 (Arrays) (5%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-SAS-2026-12-16-Signalstest@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:Signals: Signals test
+UID:examcal-EN2713-2026-12-16-Test2Laplaceandt@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2713 Electronic Circuit Design: Test 2: Laplace and time-domain response (30 min) (10%)
 DTSTART;VALUE=DATE:20261216
 DTEND;VALUE=DATE:20261217
-DESCRIPTION:Signals and Systems
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Signals: Signals test
+DESCRIPTION:EN2713 Electronic Circuit Design: Test 2: Laplace and time-domain response (30 min) (10%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Signals: Signals test
+DESCRIPTION:EN2713 Electronic Circuit Design: Test 2: Laplace and time-domain response (30 min) (10%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-EN2713-2026-12-16-Test2:Lapl@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2713: Test 2: Laplace and time-domain response (30 min)
-DTSTART;VALUE=DATE:20261216
-DTEND;VALUE=DATE:20261217
-DESCRIPTION:Analogue electronics\, networks and digital
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:EN2713: Test 2: Laplace and time-domain response (30 min)
-TRIGGER:-P7D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:EN2713: Test 2: Laplace and time-domain response (30 min)
-TRIGGER:-P2D
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:examcal-EN2712-2027-01-14-Test:Synchr@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2712: Test: Synchronous machines
+UID:examcal-EN2712-2027-01-14-TestSynchronousm@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2712 Electric Power Systems: Test: Synchronous machines (8%)
 DTSTART;TZID=Europe/London:20270114T131000
 DTEND;TZID=Europe/London:20270114T140000
 LOCATION:T/2.08
-DESCRIPTION:Electrical machines and power
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Test: Synchronous machines
+DESCRIPTION:EN2712 Electric Power Systems: Test: Synchronous machines (8%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Test: Synchronous machines
+DESCRIPTION:EN2712 Electric Power Systems: Test: Synchronous machines (8%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-EN2712-2027-03-18-Test:Transm@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2712: Test: Transmission lines
+UID:examcal-EN2712-2027-03-18-TestTransmission@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2712 Electric Power Systems: Test: Transmission lines (8%)
 DTSTART;TZID=Europe/London:20270318T100000
 DTEND;TZID=Europe/London:20270318T115000
 LOCATION:S/-1.26
-DESCRIPTION:Electrical machines and power
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Test: Transmission lines
+DESCRIPTION:EN2712 Electric Power Systems: Test: Transmission lines (8%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Test: Transmission lines
+DESCRIPTION:EN2712 Electric Power Systems: Test: Transmission lines (8%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:examcal-EN2712-2027-05-06-Test:Protec@exam-calendar
-DTSTAMP:20261108T210700Z
-SUMMARY:EN2712: Test: Protection case study
+UID:examcal-EN2712-2027-05-06-TestProtectionca@exam-calendar
+DTSTAMP:20261108T211500Z
+SUMMARY:EN2712 Electric Power Systems: Test: Protection case study (7%)
 DTSTART;TZID=Europe/London:20270506T100000
 DTEND;TZID=Europe/London:20270506T115000
 LOCATION:S/-1.26
-DESCRIPTION:Electrical machines and power
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Test: Protection case study
+DESCRIPTION:EN2712 Electric Power Systems: Test: Protection case study (7%)
 TRIGGER:-P7D
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:EN2712: Test: Protection case study
+DESCRIPTION:EN2712 Electric Power Systems: Test: Protection case study (7%)
 TRIGGER:-P2D
 END:VALARM
 END:VEVENT
