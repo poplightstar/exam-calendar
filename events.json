@@ -47,21 +47,21 @@
    "weight": "9%"
   },
   {
-   "mod": "DESIGN",
-   "title": "Mid-semester progress review",
-   "week": "2026-11-09",
-   "weight": "5%",
-   "kind": "presentation",
-   "note": "Week 6 per the module description. 1 to 2 minutes per student.",
-   "tbc": true
-  },
-  {
    "mod": "EN2713",
    "title": "Test 1: Network analysis (30 min)",
    "kind": "test",
    "note": "Nodal, mesh, 2-port Z/Y parameters, T/Pi-equivalent and transmission parameters.",
    "date": "2026-11-11",
    "weight": "10%"
+  },
+  {
+   "mod": "DESIGN",
+   "title": "Mid-semester progress review",
+   "weight": "5%",
+   "kind": "presentation",
+   "note": "1 to 2 minutes per student.",
+   "date": "2026-11-13",
+   "start": "09:00"
   },
   {
    "mod": "EN2712",
