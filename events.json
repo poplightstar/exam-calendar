@@ -57,10 +57,9 @@
   {
    "mod": "EN2713",
    "title": "Test 1: Network analysis (30 min)",
-   "week": "2026-11-09",
    "kind": "test",
    "note": "Nodal, mesh, 2-port Z/Y parameters, T/Pi-equivalent and transmission parameters.",
-   "tbc": true
+   "date": "2026-11-11"
   },
   {
    "mod": "EN2750",
@@ -169,9 +168,8 @@
   {
    "mod": "EN2713",
    "title": "Test 2: Laplace and time-domain response (30 min)",
-   "week": "2026-12-14",
    "kind": "test",
-   "tbc": true
+   "date": "2026-12-16"
   },
   {
    "mod": "EN2750",
@@ -192,11 +190,10 @@
   {
    "mod": "EN2712",
    "title": "Test: Synchronous machines",
-   "date": "2027-01-14",
-   "start": "13:10",
-   "end": "14:00",
-   "room": "T/2.08",
-   "kind": "test"
+   "date": "2027-01-13",
+   "start": "14:30",
+   "kind": "test",
+   "note": "Moved from the slide date of Thu 14 Jan, 13:10. Room not confirmed."
   },
   {
    "mod": "EN2712",
