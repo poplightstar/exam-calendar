@@ -62,6 +62,14 @@
    "date": "2026-11-11"
   },
   {
+   "mod": "EN2712",
+   "title": "Power test",
+   "date": "2026-11-13",
+   "start": "14:30",
+   "kind": "test",
+   "note": "Room not confirmed."
+  },
+  {
    "mod": "EN2750",
    "title": "In-lab test T3 (Loops)",
    "date": "2026-11-18",
@@ -190,10 +198,11 @@
   {
    "mod": "EN2712",
    "title": "Test: Synchronous machines",
-   "date": "2027-01-13",
-   "start": "14:30",
+   "date": "2027-01-14",
+   "start": "13:10",
    "kind": "test",
-   "note": "Moved from the slide date of Thu 14 Jan, 13:10. Room not confirmed."
+   "end": "14:00",
+   "room": "T/2.08"
   },
   {
    "mod": "EN2712",
