@@ -19,6 +19,13 @@
    "note": "Assignment 1 handed in at the lab. Quiz 1 this week."
   },
   {
+   "mod": "SAS",
+   "title": "Class test 1 (25 min)",
+   "date": "2026-10-21",
+   "weight": "12%",
+   "kind": "test"
+  },
+  {
    "mod": "EN2750",
    "title": "In-lab test T2",
    "date": "2026-11-04",
@@ -30,11 +37,11 @@
   },
   {
    "mod": "SAS",
-   "title": "Class test 1 (25 min)",
+   "title": "Class test 2 (25 min)",
    "date": "2026-11-04",
    "weight": "12%",
    "kind": "test",
-   "note": "Every two weeks from 4 Nov, in the Wednesday morning Signals slot."
+   "note": "In the Wednesday morning Signals slot."
   },
   {
    "mod": "EN2712",
@@ -92,10 +99,10 @@
   },
   {
    "mod": "SAS",
-   "title": "Class test 2 (25 min)",
+   "title": "Class test 3 (25 min)",
    "date": "2026-11-18",
    "kind": "test",
-   "note": "Every two weeks from 4 Nov, in the Wednesday morning Signals slot.",
+   "note": "Last class test. In the Wednesday morning Signals slot.",
    "weight": "12%"
   },
   {
@@ -144,14 +151,6 @@
    "weight": "5%",
    "kind": "test",
    "note": "Hand in Assignment 4 at the lab. Quiz 4 this week."
-  },
-  {
-   "mod": "SAS",
-   "title": "Class test 3 (25 min)",
-   "date": "2026-12-02",
-   "kind": "test",
-   "weight": "12%",
-   "note": "Every two weeks from 4 Nov, in the Wednesday morning Signals slot."
   },
   {
    "mod": "DESIGN",
