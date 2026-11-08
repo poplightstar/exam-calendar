@@ -2,215 +2,199 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Exam Calendar 2026/27</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exams 2026/27</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: one column of teaching weeks, each a row with a load gauge on the left and its deadlines on the right */
+/* A printed wall planner: one month per sheet, ink on paper, red pen for tests. */
 :root{
-  --bg:#f3f5f7; --panel:#ffffff; --fg:#14202b; --muted:#5d6b78; --line:#d9e0e6;
-  --accent:#d6402b; --accent-soft:#fbe4e0;
-  --test:#d6402b; --cw:#c98a0c; --pres:#2f6fb5; --lab:#4d8a4f; --other:#7a8693; --exam:#8c1d4f;
-  --display:"Archivo",system-ui,sans-serif; --body:"Archivo",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --paper:#fbfaf6; --ink:#1b1b19; --faint:#77756d; --rule:#d8d5cb; --shade:#efede6;
+  --red:#c42b1c; --amber:#9a6200; --blue:#1d4f91; --green:#3d6b2f;
+  --serif:"Newsreader",Georgia,serif; --sans:"Public Sans",Helvetica,Arial,sans-serif; --mono:"IBM Plex Mono",Menlo,monospace;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f161c; --panel:#17212a; --fg:#e6ecf1; --muted:#93a1ad; --line:#2a3642;
-  --accent:#ff6a52; --accent-soft:#3a1f1b;
-  --test:#ff6a52; --cw:#e8ae3a; --pres:#6aa6ea; --lab:#7fbf81; --other:#93a1ad; --exam:#e66da3; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0f161c; --panel:#17212a; --fg:#e6ecf1; --muted:#93a1ad; --line:#2a3642;
-  --accent:#ff6a52; --accent-soft:#3a1f1b;
-  --test:#ff6a52; --cw:#e8ae3a; --pres:#6aa6ea; --lab:#7fbf81; --other:#93a1ad; --exam:#e66da3; color-scheme:dark}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
-.wrap{max-width:900px;margin:0 auto;padding-block:28px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,40px);letter-spacing:-.02em;margin:0;text-wrap:balance}
-h2{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
-.sub{color:var(--muted);margin:4px 0 0}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.next{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:6px 20px;align-items:center}
-.next .count{font-family:var(--mono);font-weight:600;font-size:40px;line-height:1;color:var(--accent);grid-row:span 2}
-.next .count small{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:4px}
-.next .what{font-weight:600;font-size:18px;min-width:0}
-.next .meta{color:var(--muted);min-width:0}
-.filters{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:999px;padding:5px 12px;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.chip:focus-visible,.toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
-.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:var(--c);vertical-align:-1px}
-.weeks{display:grid;gap:10px}
-.week{display:grid;grid-template-columns:120px 1fr;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.week.past{opacity:.55}
-.week.now{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
-.wk{display:grid;gap:4px;align-content:start}
-.wk b{font-family:var(--mono);font-size:13px}
-.wk .wc{font-size:13px;color:var(--muted)}
-.gauge{display:flex;gap:3px;margin-top:4px}
-.gauge i{width:12px;height:12px;border-radius:2px;background:var(--line)}
-.gauge i.on{background:var(--accent)}
-.wk .heavy{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.items{display:grid;gap:10px;min-width:0}
-.item{display:grid;grid-template-columns:4px 1fr;gap:12px;min-width:0}
-.item .bar{border-radius:2px;background:var(--c)}
-.item .t{font-weight:600}
-.item .m{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px}
-.item .n{font-size:13px;color:var(--muted);margin-top:2px}
-.badge{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;white-space:nowrap}
-.badge.tbc{background:var(--accent-soft);color:var(--accent)}
-.badge.w{border:1px solid var(--line);color:var(--fg)}
-.empty{color:var(--muted);font-size:14px}
-.recess{text-align:center;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:10px;padding:10px}
-.toggle{font:inherit;font-size:13px;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:0;justify-self:start}
-.tbclist{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 16px}
-.tbclist div{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
-.tbclist div:last-child{border-bottom:0}
-.tbclist .when{color:var(--muted);font-size:13px;text-align:right}
-.flags{display:grid;gap:8px;margin:0;padding-left:20px}
-@media (max-width:560px){.week{grid-template-columns:1fr;gap:10px}.wk{grid-template-columns:auto auto 1fr;align-items:center;gap:10px}.gauge{margin:0;justify-self:end}}
-@media (prefers-reduced-motion:no-preference){.week{transition:opacity .2s}}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#161614; --ink:#ecebe4; --faint:#9c998f; --rule:#34332e; --shade:#1f1f1c;
+  --red:#ff7a6b; --amber:#e0a842; --blue:#86adeb; --green:#9cc78b; color-scheme:dark}}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 var(--sans)}
+main{max-width:1080px;margin:0 auto;padding:32px 20px 64px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 32px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+h1{font:700 44px/1 var(--serif);margin:0;letter-spacing:-.01em}
+.links{font-size:14px;display:flex;gap:18px;flex-wrap:wrap}
+a{color:var(--ink)}
+.next{padding:14px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.next b{color:var(--red)}
+.next .when{font-family:var(--mono);font-size:14px;color:var(--faint)}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding:14px 0 6px;font-size:13px}
+.filters{display:flex;flex-wrap:wrap;gap:4px 14px}
+.filters button{font:inherit;background:none;border:0;padding:2px 0;color:var(--faint);cursor:pointer}
+.filters button[aria-pressed="true"]{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.filters button:focus-visible{outline:1px solid var(--ink)}
+.key{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--faint)}
+.tag{font:600 10px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:2px 3px;border:1px solid currentColor;display:inline-block;vertical-align:1px}
+.k-test{color:var(--red)} .k-exam{color:var(--red)} .k-cw{color:var(--amber)} .k-presentation{color:var(--blue)} .k-lab{color:var(--green)}
+section.month{margin-top:36px}
+.month h2{font:500 28px/1 var(--serif);margin:0 0 8px;display:flex;gap:12px;align-items:baseline}
+.month h2 span{font:13px var(--sans);color:var(--faint)}
+.grid{display:grid;grid-template-columns:44px repeat(7,minmax(0,1fr));border-top:1px solid var(--ink);border-left:1px solid var(--rule)}
+.dow{font:600 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--faint);padding:6px 6px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.wk{font:11px var(--mono);color:var(--faint);padding:6px 4px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);writing-mode:vertical-rl;transform:rotate(180deg);text-align:right}
+.day{min-height:104px;padding:5px 6px 8px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:6px;min-width:0}
+.day .n{font:600 13px var(--mono);font-variant-numeric:tabular-nums}
+.day.out{background:var(--shade)} .day.out .n{color:var(--rule)}
+.day.weekend{background:var(--shade)}
+.day.past > *{opacity:.45}
+.day.today{outline:2px solid var(--ink);outline-offset:-2px}
+.day.today .n::after{content:" today";font-weight:400;color:var(--faint)}
+.day.recess{background:repeating-linear-gradient(135deg,var(--shade) 0 6px,transparent 6px 12px)}
+.day.recess .n::after{content:" recess";font-weight:400;color:var(--faint)}
+.ev{font-size:12.5px;line-height:1.3;overflow-wrap:anywhere}
+.ev .t{font-weight:600}
+.ev .m{color:var(--faint);font-family:var(--mono);font-size:11px}
+.tbc{grid-column:2 / -1;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:6px 8px;font-size:12.5px;background:var(--paper);display:flex;flex-wrap:wrap;gap:4px 18px}
+.tbc .lbl{font:600 11px var(--mono);text-transform:uppercase;color:var(--faint)}
+.tbcfill{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.later{margin-top:40px;border-top:2px solid var(--ink)}
+.later h2{font:500 28px/1 var(--serif);margin:16px 0 4px}
+.later p{color:var(--faint);margin:0 0 8px;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+td{border-bottom:1px solid var(--rule);padding:8px 8px 8px 0;vertical-align:top}
+td:last-child{text-align:right;font-family:var(--mono);font-size:13px;color:var(--faint);white-space:nowrap}
+.notes{margin-top:40px;border-top:2px solid var(--ink);padding-top:12px;font-size:14px}
+.notes h2{font:500 22px var(--serif);margin:0 0 6px}
+.notes ul{margin:0;padding-left:18px;display:grid;gap:6px}
+footer{margin-top:40px;font-size:12px;color:var(--faint)}
+@media (max-width:720px){
+  h1{font-size:34px}
+  .grid{display:block;border:0;border-top:1px solid var(--ink)}
+  .dow,.wk,.tbcfill,.day.out{display:none}
+  .day{min-height:0;flex-direction:row;gap:12px;border:0;border-bottom:1px solid var(--rule);padding:10px 0;background:none}
+  .day.weekend,.day.recess{background:none}
+  .day.empty{display:none}
+  .day .n{min-width:64px}
+  .day .n::before{content:attr(data-dow) " "}
+  .day .evs{display:grid;gap:8px}
+  td:last-child{white-space:normal;max-width:40%}
+  .tbc{border:0;border-bottom:1px solid var(--rule);padding:10px 0;display:grid}
+}
 </style>
-
-<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
 </head>
 <body>
-<div class="wrap">
+<main>
   <header>
-    <h1>Exam Calendar</h1>
-    <p class="sub"><a href="exams-2026-27.ics" style="color:var(--accent);font-weight:600">Add the dated tests to your calendar (.ics)</a></p>
-    <p class="sub">Every test, coursework deadline and presentation for 2026/27, by teaching week. Built from the module slides.</p>
+    <h1>Exams 2026/27</h1>
+    <div class="links"><a href="exams-2026-27.ics">Add to calendar (.ics)</a><a href="events.json">Raw data</a></div>
   </header>
-
-  <section class="next" id="next" aria-live="polite"></section>
-
-  <section>
-    <h2>Modules</h2>
+  <div class="next" id="next">Loading…</div>
+  <div class="bar">
     <div class="filters" id="filters"></div>
-  </section>
-
-  <div class="legend">
-    <span style="--c:var(--test)">Test</span>
-    <span style="--c:var(--exam)">Final test / exam</span>
-    <span style="--c:var(--cw)">Coursework / submission</span>
-    <span style="--c:var(--pres)">Presentation / review</span>
-    <span style="--c:var(--lab)">Lab</span>
-      </div>
-
-  <section>
-    <h2>Autumn semester</h2>
-    <div class="weeks" id="autumn"></div>
-  </section>
-
-  <section>
-    <h2>Spring semester</h2>
-    <div class="weeks" id="spring"></div>
-  </section>
-
-  <section>
-    <h2>Spring dates still to confirm</h2>
-    <div class="tbclist" id="tbc"></div>
-  </section>
-
-  <section>
-    <h2>Check these</h2>
-    <ul class="flags">
-      <li><b>Signals tests</b> are shown every 2 weeks from 4 Nov, on the same Wednesday mornings as the Computing in-lab tests (18 Nov, 2 Dec, 16 Dec). If they are the same thing, or one moves, update events.json.</li>
-      <li><b>Computing final test (80%)</b> is in week 12 with no day given. If it's in the Wednesday lab slot, it's Wed 13 Jan.</li>
-      <li><b>EN2713 tests</b> and the <b>design module</b> items only give a week, not a day. They are marked "Day TBC".</li>
+    <div class="key"><span><span class="tag k-test">Test</span></span><span><span class="tag k-cw">Due</span></span><span><span class="tag k-presentation">Pres</span></span><span><span class="tag k-lab">Lab</span></span></div>
+  </div>
+  <div id="months"></div>
+  <div class="later">
+    <h2>Spring, week only</h2>
+    <p>These are on the slides by teaching week. Dates go in once the spring timetable is out.</p>
+    <table id="tbc"></table>
+  </div>
+  <div class="notes">
+    <h2>To check</h2>
+    <ul>
+      <li>Signals tests are pencilled in every two weeks from 4 Nov. 18 Nov, 2 Dec and 16 Dec are also EN2750 in-lab test days.</li>
+      <li>The EN2750 final test (80%) is in week 12 with no day given. If it's the Wednesday lab slot, it's 13 Jan.</li>
+      <li>EN2713 tests and the design module only give a week, so they sit under that week as "day TBC".</li>
     </ul>
-  </section>
-</div>
-
+  </div>
+  <footer>Weeks are teaching weeks. Week 1 started Monday 5 October 2026.</footer>
+</main>
 <script>
-const DATA = {"modules": {"EN2750": "Computing", "SAS": "Signals and Systems", "EN2712": "Electrical machines and power", "EN2713": "Analogue electronics, networks and digital", "EN2090": "Coursework module", "DESIGN": "Design project module"}, "events": [{"mod": "EN2750", "title": "In-lab test T1", "date": "2026-10-21", "start": "10:00", "end": "11:50", "weight": "0%", "kind": "test", "note": "Assignment 1 handed in at the lab. Quiz 1 this week."}, {"mod": "EN2750", "title": "In-lab test T2", "date": "2026-11-04", "start": "10:00", "end": "11:50", "weight": "5%", "kind": "test", "note": "Assignment 2 handed in at the lab. Quiz 2 this week."}, {"mod": "SAS", "title": "Signals test", "date": "2026-11-04", "weight": "", "kind": "test", "note": "In the usual Wednesday morning Signals lesson slot and room."}, {"mod": "EN2712", "title": "Test: Three-phase transformers", "date": "2026-11-05", "start": "13:10", "end": "14:00", "room": "T/1.08, T/2.06", "kind": "test"}, {"mod": "DESIGN", "title": "Mid-semester progress review", "week": "2026-11-09", "weight": "5%", "kind": "presentation", "note": "Runs in week 5 or 6. If yours wasn't last week, it's this week.", "tbc": true}, {"mod": "EN2713", "title": "Test 1: Network analysis (30 min)", "week": "2026-11-09", "kind": "test", "note": "Nodal, mesh, 2-port Z/Y parameters, T/Pi-equivalent and transmission parameters.", "tbc": true}, {"mod": "EN2750", "title": "In-lab test T3 (Loops)", "date": "2026-11-18", "start": "10:00", "end": "11:50", "weight": "5%", "kind": "test", "note": "Hand in Assignment 3 at the lab or the test scores 0. Quiz 3 this week."}, {"mod": "SAS", "title": "Signals test", "date": "2026-11-18", "kind": "test", "note": "Every 2 weeks from 4 Nov, Wednesday morning Signals slot.", "assumed": true}, {"mod": "DESIGN", "title": "Practical design assignment 1", "week": "2026-11-16", "weight": "10%", "kind": "cw", "tbc": true}, {"mod": "EN2090", "title": "Coursework due (single PDF + signed cover sheet)", "date": "2026-11-26", "start": "12:00", "weight": "20%", "kind": "cw", "room": "Learning Central", "note": "Late work is penalised."}, {"mod": "EN2712", "title": "Test: Asynchronous machines", "date": "2026-11-26", "start": "13:10", "end": "14:00", "room": "T/1.08, T/2.06", "kind": "test"}, {"mod": "EN2750", "title": "In-lab test T4 (Functions)", "date": "2026-12-02", "start": "10:00", "end": "11:50", "weight": "5%", "kind": "test", "note": "Hand in Assignment 4 at the lab. Quiz 4 this week."}, {"mod": "SAS", "title": "Signals test", "date": "2026-12-02", "kind": "test", "assumed": true}, {"mod": "DESIGN", "title": "Practical design assignment 2", "week": "2026-11-30", "weight": "10%", "kind": "cw", "tbc": true}, {"mod": "EN2713", "title": "Laboratory 1 (3 hrs x 2 x 2)", "week": "2026-11-30", "kind": "lab", "note": "Runs weeks 9 and 10.", "tbc": true}, {"mod": "DESIGN", "title": "Individual presentation", "week": "2026-12-07", "weight": "10%", "kind": "presentation", "note": "Week 10 or 11.", "tbc": true}, {"mod": "EN2750", "title": "In-lab test T5 (Arrays)", "date": "2026-12-16", "start": "10:00", "end": "11:50", "weight": "5%", "kind": "test", "note": "Hand in Assignment 5 at the lab. Quiz 5 this week."}, {"mod": "SAS", "title": "Signals test", "date": "2026-12-16", "kind": "test", "assumed": true}, {"mod": "EN2713", "title": "Test 2: Laplace and time-domain response (30 min)", "week": "2026-12-14", "kind": "test", "tbc": true}, {"mod": "EN2750", "title": "Final test (1.5 hours)", "week": "2027-01-11", "weight": "80%", "kind": "exam", "note": "The big one for Computing. Day not on the slide; if it's in the Wednesday lab slot it lands on 13 Jan.", "tbc": true}, {"mod": "EN2713", "title": "Laboratory 1 portfolio submission", "week": "2027-01-11", "kind": "cw", "tbc": true}, {"mod": "EN2712", "title": "Test: Synchronous machines", "date": "2027-01-14", "start": "13:10", "end": "14:00", "room": "T/2.08", "kind": "test"}, {"mod": "EN2712", "title": "Test: Transmission lines", "date": "2027-03-18", "start": "10:00", "end": "11:50", "room": "S/-1.26", "kind": "test"}, {"mod": "EN2712", "title": "Test: Protection case study", "date": "2027-05-06", "start": "10:00", "end": "11:50", "room": "S/-1.26", "kind": "test"}], "spring_tbc": [{"mod": "DESIGN", "title": "Mid-semester progress review", "when": "Week 18/19", "weight": "5%"}, {"mod": "DESIGN", "title": "Economics, Law and Accounting test", "when": "Week 18", "weight": "15%"}, {"mod": "DESIGN", "title": "Group presentation show and tell", "when": "Week 23", "weight": "20%"}, {"mod": "DESIGN", "title": "Individual report", "when": "Week 25", "weight": "25%"}, {"mod": "EN2713", "title": "Laboratory 2 (3 hrs x 3)", "when": "Weeks 23 to 25", "weight": ""}, {"mod": "EN2713", "title": "Laboratory 2 portfolio submission", "when": "Week 26", "weight": ""}, {"mod": "EN2713", "title": "Exam (2 hours)", "when": "Summer assessment period, weeks 27 to 31", "weight": ""}]};
-const KIND = {test:"--test",exam:"--exam",cw:"--cw",presentation:"--pres",lab:"--lab",other:"--other"};
-const SCORED = new Set(["test","exam","cw","presentation"]);
-const DAY = 864e5;
-const W1 = new Date(2026,9,5);           // Week 1 commences Mon 5 Oct 2026
-const today = new Date(); today.setHours(0,0,0,0);
-const p = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y,m-1,d); };
-const fmt = (d,o) => d.toLocaleDateString("en-GB",o);
-const monday = d => { const x = new Date(d); x.setDate(x.getDate()-((x.getDay()+6)%7)); return x; };
-let active = null;
-try { active = localStorage.getItem("examcal-mod"); } catch(e) {}
+const TAG = {test:"Test",exam:"Final",cw:"Due",presentation:"Pres",lab:"Lab"};
+const NAMES = {SAS:"Signals",DESIGN:"Design"};
+const label = m => NAMES[m] || m;
+const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const parse = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y,m-1,d); };
+const addDays = (d,n) => { const x = new Date(d.getFullYear(),d.getMonth(),d.getDate()); x.setDate(x.getDate()+n); return x; };
+const mondayOf = d => addDays(d, -((d.getDay()+6)%7));
+const DOW = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const W1 = new Date(2026,9,5);
+const RECESS = [new Date(2026,11,19), new Date(2027,0,10)];
+const today = new Date(); const T = iso(today);
+function teachWeek(mon){
+  const n = Math.round((mon - W1) / 864e5 / 7) + 1;
+  if (mon >= new Date(2027,0,11)) return n - 3 <= 14 ? n - 3 : null;
+  if (mon >= new Date(2026,11,21)) return null;
+  return n;
+}
+let DATA, active = null;
+try { active = localStorage.getItem("exams-mod"); } catch(e) {}
 
-DATA.events.forEach(e => {
-  e.d = e.date ? p(e.date) : p(e.week);
-  e.wc = monday(e.d);
-});
-
-function weekNo(wc){ const n = Math.round((wc - W1)/(7*DAY)) + 1; return wc >= new Date(2027,0,11) ? n-3 : n; }
-
-function itemHTML(e){
-  const time = e.date ? fmt(e.d,{weekday:"short",day:"numeric",month:"short"}) + (e.start ? `, ${e.start}${e.end?"–"+e.end:""}` : "") : "Day TBC";
-  const mod = e.mod==="OTHER" ? "" : `<span>${e.mod==="SAS"||e.mod==="DESIGN"?DATA.modules[e.mod]:e.mod+" "+DATA.modules[e.mod]}</span>`;
-  return `<div class="item" style="--c:var(${KIND[e.kind]})"><span class="bar"></span><div>
-    <div class="t">${e.title}${e.weight?`<span class="badge w">${e.weight}</span>`:""}${e.tbc?`<span class="badge tbc">Day TBC</span>`:""}${e.assumed?`<span class="badge tbc">Assumed</span>`:""}</div>
-    <div class="m"><span class="mono">${time}</span>${mod}${e.room?`<span>${e.room}</span>`:""}</div>
-    ${e.note?`<div class="n">${e.note}</div>`:""}</div></div>`;
+function evHTML(e, withDay){
+  const time = e.start ? e.start + (e.end ? "–" + e.end : "") : "";
+  const meta = [label(e.mod), time, e.room].filter(Boolean).join(" · ");
+  return `<div class="ev" title="${(e.note||"").replace(/"/g,"&quot;")}"><span class="tag k-${e.kind}">${TAG[e.kind]}</span> <span class="t">${e.title.replace(/^Test: /,"")}</span>${e.weight?` <span class="m">${e.weight}</span>`:""}${e.assumed?` <span class="m">(pencilled)</span>`:""}<div class="m">${meta}</div></div>`;
 }
 
 function render(){
-  const ev = DATA.events.filter(e => !active || e.mod===active);
-  // weeks
-  const byWeek = new Map();
-  ev.forEach(e => { const k=+e.wc; if(!byWeek.has(k)) byWeek.set(k,[]); byWeek.get(k).push(e); });
-  const thisMon = +monday(today);
-  const build = (from,to,el,showRecess) => {
-    let html=""; let pastHidden=0;
-    const showPast = el.dataset.showPast==="1";
-    for(let t=+from; t<=+to; t+=7*DAY){
-      const wc = new Date(t);
-      const list = (byWeek.get(+wc)||[]).sort((a,b)=>a.d-b.d||(a.start||"").localeCompare(b.start||""));
-      if(showRecess && +wc===+new Date(2026,11,21)){ html+=`<div class="recess">Christmas recess · 19 Dec – 10 Jan</div>`; t+=2*7*DAY; continue; }
-      if(!list.length && el.id==="spring") continue;
-      const past = +wc < thisMon;
-      if(past && !showPast){ pastHidden++; continue; }
-      const load = list.filter(e=>SCORED.has(e.kind)).length;
-      const n = weekNo(wc);
-      html += `<div class="week${past?" past":""}${+wc===thisMon?" now":""}">
-        <div class="wk"><b>${el.id==="autumn"||n<=14?"Week "+n:"Spring"}</b><span class="wc">w/c ${fmt(wc,{day:"numeric",month:"short"})}</span>
-        <div class="gauge" aria-label="${load} assessed items">${Array.from({length:Math.max(5,load)},(_,i)=>`<i class="${i<load?"on":""}"></i>`).join("")}</div>
-        ${load>=3?`<span class="heavy">Heavy week</span>`:""}</div>
-        <div class="items">${list.length?list.map(itemHTML).join(""):`<div class="empty">Nothing assessed this week.</div>`}</div></div>`;
+  const evs = DATA.events.filter(e => e.mod !== "OTHER" && (!active || e.mod === active));
+  const byDay = {}, byWeek = {};
+  evs.forEach(e => {
+    if (e.date) (byDay[e.date] ||= []).push(e);
+    else (byWeek[iso(mondayOf(parse(e.week)))] ||= []).push(e);
+  });
+  Object.values(byDay).forEach(l => l.sort((a,b)=>(a.start||"99").localeCompare(b.start||"99")));
+  const months = [[2026,10],[2026,11],[2027,0],[2027,2],[2027,4]];
+  let html = "";
+  for (const [y,m] of months){
+    const first = new Date(y,m,1), last = new Date(y,m+1,0);
+    let d = mondayOf(first);
+    html += `<section class="month"><h2>${first.toLocaleDateString("en-GB",{month:"long"})} <span>${y}</span></h2><div class="grid"><div class="dow"></div>${DOW.map(x=>`<div class="dow">${x}</div>`).join("")}`;
+    while (d <= last){
+      const mon = d, wn = teachWeek(mon);
+      html += `<div class="wk">${wn ? "Week " + wn : ""}</div>`;
+      for (let i=0;i<7;i++){
+        const k = iso(d), out = d.getMonth() !== m, list = out ? [] : (byDay[k]||[]);
+        const cls = ["day", out&&"out", i>4&&"weekend", k<T&&"past", k===T&&"today", (!out && d>=RECESS[0] && d<=RECESS[1])&&"recess", !list.length&&k!==T&&"empty"].filter(Boolean).join(" ");
+        html += `<div class="${cls}"><div class="n" data-dow="${DOW[i]}">${d.getDate()}</div><div class="evs">${list.map(e=>evHTML(e)).join("")}</div></div>`;
+        d = addDays(d,1);
+      }
+      const wk = byWeek[iso(mon)];
+      if (wk && mon.getMonth() === m)
+        html += `<div class="tbcfill"></div><div class="tbc"><span class="lbl">Week ${wn}, day TBC</span>${wk.map(e=>evHTML(e)).join("")}</div>`;
     }
-    if(pastHidden) html = `<button class="toggle" id="${el.id}-past">Show ${pastHidden} past week${pastHidden>1?"s":""}</button>` + html;
-    else if(showPast) html = `<button class="toggle" id="${el.id}-past">Hide past weeks</button>` + html;
-    el.innerHTML = html;
-    const b = document.getElementById(el.id+"-past");
-    if(b) b.onclick = () => { el.dataset.showPast = showPast?"0":"1"; render(); };
-  };
-  build(new Date(2026,9,19), new Date(2027,0,25), document.getElementById("autumn"), true);
-  build(new Date(2027,1,1), new Date(2027,5,28), document.getElementById("spring"), false);
+    html += `</div></section>`;
+  }
+  document.getElementById("months").innerHTML = html;
 
-  // TBC
-  const tbc = DATA.spring_tbc.filter(e => !active || e.mod===active);
-  document.getElementById("tbc").innerHTML = tbc.length ? tbc.map(e=>`<div><span>${e.title}${e.weight?`<span class="badge w">${e.weight}</span>`:""}<br><span class="n" style="color:var(--muted);font-size:13px">${e.mod==="DESIGN"?DATA.modules.DESIGN:e.mod+" "+DATA.modules[e.mod]}</span></span><span class="when">${e.when}</span></div>`).join("") : `<div><span class="empty">Nothing for this module.</span></div>`;
+  const tb = DATA.spring_tbc.filter(e => !active || e.mod === active);
+  document.getElementById("tbc").innerHTML = tb.length ? tb.map(e=>`<tr><td><b>${e.title}</b>${e.weight?` · ${e.weight}`:""}<br><span style="color:var(--faint)">${label(e.mod)}</span></td><td>${e.when}</td></tr>`).join("") : `<tr><td>Nothing for ${label(active)}.</td><td></td></tr>`;
 
-  // next up
-  const up = DATA.events.filter(e => SCORED.has(e.kind) && e.d>=today && (!active||e.mod===active)).sort((a,b)=>a.d-b.d);
-  const nx = up[0];
-  const el = document.getElementById("next");
-  if(!nx){ el.innerHTML = `<div class="what">Nothing left to sit for this module.</div>`; return; }
-  const days = Math.max(0, Math.round((nx.d - today)/DAY));
-  const sameDay = up.filter(e=>e.date && +e.d===+nx.d && e!==nx);
-  el.innerHTML = `<div class="count">${days===0?"Today":days}${days===0?"":`<small>day${days===1?"":"s"} to go</small>`}</div>
-    <div class="what">Next: ${nx.title}${nx.weight?` <span class="badge w">${nx.weight}</span>`:""}</div>
-    <div class="meta">${nx.tbc?"Week commencing "+fmt(nx.d,{day:"numeric",month:"long"})+", day to be confirmed":fmt(nx.d,{weekday:"long",day:"numeric",month:"long"})}${nx.start?", "+nx.start:""}${nx.room?" · "+nx.room:""}${sameDay.length?` · also that day: ${sameDay.map(e=>e.title).join(", ")}`:""}</div>`;
+  const up = evs.filter(e => e.kind !== "lab" && (e.date ? e.date >= T : iso(addDays(parse(e.week),6)) >= T))
+                .sort((a,b)=>(a.date||a.week).localeCompare(b.date||b.week));
+  const nx = up[0], el = document.getElementById("next");
+  if (!nx) { el.textContent = "Nothing left to sit."; return; }
+  const days = Math.round((parse(nx.date||nx.week) - parse(T)) / 864e5);
+  const when = nx.date
+    ? parse(nx.date).toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"}) + (nx.start ? ", " + nx.start : "") + (nx.room ? ", " + nx.room : "")
+    : "week of " + parse(nx.week).toLocaleDateString("en-GB",{day:"numeric",month:"long"}) + ", day TBC";
+  const dueIn = !nx.date ? (days <= 7 ? "this week" : `week of ${parse(nx.week).getDate()} ${parse(nx.week).toLocaleDateString("en-GB",{month:"short"})}`) : days <= 0 ? "today" : days === 1 ? "tomorrow" : `in ${days} days`;
+  el.innerHTML = `Next up ${dueIn}: <b>${label(nx.mod)} ${nx.title}</b>${nx.weight?` (${nx.weight})`:""} <span class="when">${when}</span>`;
 }
 
-const mods = ["EN2750","SAS","EN2712","EN2713","EN2090","DESIGN"];
-const f = document.getElementById("filters");
-f.innerHTML = `<button class="chip" data-m="">All</button>` + mods.map(m=>`<button class="chip" data-m="${m}">${m==="SAS"?"Signals":m==="DESIGN"?"Design":m}</button>`).join("");
-f.querySelectorAll(".chip").forEach(b => b.onclick = () => {
-  active = b.dataset.m || null;
-  try { active ? localStorage.setItem("examcal-mod",active) : localStorage.removeItem("examcal-mod"); } catch(e) {}
-  sync(); render();
-});
-function sync(){ f.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.m||null)===active))); }
-sync(); render();
-</script>
+function filters(){
+  const mods = ["EN2750","SAS","EN2712","EN2713","EN2090","DESIGN"];
+  const f = document.getElementById("filters");
+  f.innerHTML = [`<button data-m="">All</button>`, ...mods.map(m=>`<button data-m="${m}">${label(m)}</button>`)].join("");
+  const sync = () => f.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.m||null) === active)));
+  f.onclick = ev => { const b = ev.target.closest("button"); if(!b) return; active = b.dataset.m || null;
+    try { active ? localStorage.setItem("exams-mod",active) : localStorage.removeItem("exams-mod"); } catch(e) {}
+    sync(); render(); };
+  sync();
+}
 
+fetch("events.json").then(r=>r.json()).then(d => { DATA = d; filters(); render(); })
+  .catch(() => { document.getElementById("next").textContent = "Couldn't load events.json."; });
+</script>
 </body>
 </html>
