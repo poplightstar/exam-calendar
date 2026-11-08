@@ -1,11 +1,11 @@
 {
  "modules": {
-  "EN2750": "Computing",
-  "SAS": "Signals and Systems",
-  "EN2712": "Electrical machines and power",
-  "EN2713": "Analogue electronics, networks and digital",
-  "EN2090": "Coursework module",
-  "DESIGN": "Design project module"
+  "EN2750": "Programming for Engineering",
+  "SAS": "Signals and Systems for Communications",
+  "EN2712": "Electric Power Systems",
+  "EN2713": "Electronic Circuit Design",
+  "EN2090": "Engineering Mathematics 2",
+  "DESIGN": "Group Design Project"
  },
  "events": [
   {
@@ -30,7 +30,7 @@
   },
   {
    "mod": "SAS",
-   "title": "Signals test",
+   "title": "Test",
    "date": "2026-11-04",
    "weight": "",
    "kind": "test",
@@ -81,7 +81,7 @@
   },
   {
    "mod": "SAS",
-   "title": "Signals test",
+   "title": "Test",
    "date": "2026-11-18",
    "kind": "test",
    "note": "Every 2 weeks from 4 Nov, Wednesday morning Signals slot.",
@@ -126,7 +126,7 @@
   },
   {
    "mod": "SAS",
-   "title": "Signals test",
+   "title": "Test",
    "date": "2026-12-02",
    "kind": "test",
    "assumed": true
@@ -168,7 +168,7 @@
   },
   {
    "mod": "SAS",
-   "title": "Signals test",
+   "title": "Test",
    "date": "2026-12-16",
    "kind": "test",
    "assumed": true
