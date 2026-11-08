@@ -19,13 +19,6 @@
    "note": "Assignment 1 handed in at the lab. Quiz 1 this week."
   },
   {
-   "mod": "SAS",
-   "title": "Class test 1 (25 min)",
-   "date": "2026-10-21",
-   "weight": "12%",
-   "kind": "test"
-  },
-  {
    "mod": "EN2750",
    "title": "In-lab test T2",
    "date": "2026-11-04",
@@ -89,14 +82,6 @@
    "note": "Hand in Assignment 3 at the lab or the test scores 0. Quiz 3 this week."
   },
   {
-   "mod": "SAS",
-   "title": "Class test 3 (25 min)",
-   "date": "2026-11-18",
-   "kind": "test",
-   "note": "Last class test. In the Wednesday morning Signals slot.",
-   "weight": "12%"
-  },
-  {
    "mod": "EN2090",
    "title": "Coursework due (single PDF + signed cover sheet)",
    "date": "2026-11-26",
@@ -133,6 +118,14 @@
    "weight": "5%",
    "kind": "test",
    "note": "Hand in Assignment 4 at the lab. Quiz 4 this week."
+  },
+  {
+   "mod": "SAS",
+   "title": "Class test 3 (25 min)",
+   "date": "2026-12-02",
+   "kind": "test",
+   "note": "Week 9. Assumed to be in the Wednesday morning Signals slot. Last class test.",
+   "weight": "12%"
   },
   {
    "mod": "DESIGN",
