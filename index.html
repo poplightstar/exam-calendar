@@ -6,20 +6,20 @@
 <title>Exams 2026/27</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;600&display=swap">
 <style>
 /* A printed wall planner: one month per sheet, ink on paper, red pen for tests. */
 :root{
   --paper:#fbfaf6; --ink:#1b1b19; --faint:#77756d; --rule:#d8d5cb; --shade:#efede6;
   --red:#c42b1c; --amber:#9a6200; --blue:#1d4f91; --green:#3d6b2f;
-  --serif:"Newsreader",Georgia,serif; --sans:"Public Sans",Helvetica,Arial,sans-serif; --mono:"IBM Plex Mono",Menlo,monospace;
+  --serif:"Newsreader",Georgia,serif; --sans:"Public Sans",Helvetica,Arial,sans-serif; --mono:"Public Sans",Helvetica,Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root{
   --paper:#161614; --ink:#ecebe4; --faint:#9c998f; --rule:#34332e; --shade:#1f1f1c;
   --red:#ff7a6b; --amber:#e0a842; --blue:#86adeb; --green:#9cc78b; color-scheme:dark}}
 *{box-sizing:border-box}
 html{background:var(--paper)}
-body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 var(--sans)}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.45 var(--sans);font-variant-numeric:tabular-nums}
 main{max-width:1080px;margin:0 auto;padding:32px 20px 64px}
 header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 32px;border-bottom:2px solid var(--ink);padding-bottom:12px}
 h1{font:700 44px/1 var(--serif);margin:0;letter-spacing:-.01em}
